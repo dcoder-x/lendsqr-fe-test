@@ -54,7 +54,7 @@ export const sideBarMenu: menu[] = [
     sublinks: [
       {
         name: "Organization",
-        icon: assets.icons.organization,
+        icon: assets.icons.organizations,
       },
       {
         name: "Loan Products",

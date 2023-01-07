@@ -4,6 +4,7 @@ import Header from '../component/Header'
 import SideBar from '../component/SideBar'
 import User from '../component/User'
 import UserDetails from '../component/UserDetails'
+import '../styles/dashboard.scss'
 
 const DashBoard = () => {
   return (
