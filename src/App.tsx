@@ -11,6 +11,7 @@ function App() {
   return (
     <div className="App">
       <Routes>
+        <Route index path="/" element={<Login />} />
         <Route index path="login" element={<Login />} />
         <Route path="dashboard/*" element={<DashBoard />} />
       </Routes>

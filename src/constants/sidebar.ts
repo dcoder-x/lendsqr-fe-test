@@ -66,7 +66,7 @@ export const sideBarMenu: menu[] = [
       },
       {
         name: "Fees and Charges",
-        icon: assets.icons.Union,
+        icon: assets.icons.handshake,
       },
       {
         name: "Services",
@@ -96,7 +96,7 @@ export const sideBarMenu: menu[] = [
       },
       {
         name: "Fees and Pricing",
-        icon: assets.icons.Union,
+        icon: assets.icons.handshake,
       },
       {
         name: "Audit Logs",

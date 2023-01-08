@@ -2,10 +2,14 @@ import Logo from "./images/logo.png";
 import Banner from "./images/signinbanner.png";
 import Search from "./icons/search.svg";
 import bell from "./icons/bell.svg";
+import filter from "./icons/filter.svg";
 import down from "./icons/down.svg";
+import activeusers from "./icons/activeusers.svg";
+import usersvg from "./icons/users.svg";
+import userswithloan from "./icons/userswithloan.svg";
+import userswithsavings from "./icons/userswithsavings.svg";
 import users from "./icons/users.png";
 import guarantors from "./icons/guanrantors.png";
-import organizations from "./icons/organization.png";
 import karma from "./icons/karma.png";
 import loans from "./icons/loans.png";
 import handshake from "./icons/handshake.png";
@@ -42,7 +46,12 @@ export const assets = {
     dashboard:dashboard,
     services:services,
     Union:Union,
-    auditor:auditor
+    auditor:auditor,
+    usersvg,
+    userswithloan,
+    userswithsavings,
+    activeusers,
+    filter
   },
   images: {
     banner: Banner,

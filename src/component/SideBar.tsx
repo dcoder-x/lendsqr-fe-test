@@ -3,6 +3,7 @@ import { ReactSVG } from "react-svg";
 import { Link } from "react-router-dom";
 import "../styles/sideBar.scss";
 import { assets } from "../assets";
+import { sideBarMenu } from "../constants/sidebar";
 
 const SideBar = () => {
   return (
@@ -13,7 +14,19 @@ const SideBar = () => {
           icon={assets.icons.organizations}
           after={assets.icons.down}
         />
-        <SideBarLink name="Dashboard" icon={assets.icons.dashboard} />
+        <div style={{ margin: "2rem 0" }}>
+          <SideBarLink name="Dashboard" icon={assets.icons.dashboard} />
+        </div>
+        {sideBarMenu.map((menu, index) => {
+          return (
+            <div className="menu-section">
+              <p className="title">{menu.title}</p>
+              {menu.sublinks.map((link, index) => {
+                return <SideBarLink icon={link.icon} name={link.name} link={link.link}/> ;
+              })}
+            </div>
+          );
+        })}
       </section>
     </main>
   );

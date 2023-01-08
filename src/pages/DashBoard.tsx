@@ -11,10 +11,14 @@ const DashBoard = () => {
     <main id="dashboard">
         <Header/>
         <section className="page-body">
-            <SideBar/>
+            <div className="sidebar">
+                <SideBar/>
+            </div>
+            
             <section className="content">
                 <Routes>
-                    <Route path='user' element={<User/>} />
+                    <Route index path='user' element={<User/>} />
+                    <Route path='/' element={<User/>} />
                     <Route path='user' element={<UserDetails/>} />
                 </Routes>
             </section>

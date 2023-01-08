@@ -1,4 +1,24 @@
-#dashboard{
+#dashboard {
+  width: 100vw;
+  padding-top: 5rem;
+  overflow-x: hidden;
+  .page-body {
     width: 100vw;
-    margin-top: 5rem;
+    // display: flex;
+    // overflow-x: hidden;
+    // justify-content: space-between;
+    // .sidebar{
+    //     width: 2%;
+    // }
+    .content {
+      background-color: #fbfbfb;
+      min-height: 90vh;
+      width: 80%;
+      float: right;
+      overflow-x: hidden;
+      padding: 2rem 0;
+      padding-left: 2rem;
+      // position: relative;
+    }
+  }
 }
