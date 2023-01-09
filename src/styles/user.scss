@@ -1,14 +1,64 @@
 #user {
-    h1 {
-        font-family: "Work Sans";
-        font-style: normal;
-        font-weight: 500;
-        font-size: 24px;
-        line-height: 28px;
-        color: #213f7d;
-    }
-    .users{
+  min-height: 100vh;
+  h1 {
+    font-family: "Work Sans";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 28px;
+    color: #213f7d;
+  }
+  .users {
+    display: flex;
+    width: 100%;
+  }
+  table {
+    width: 100%;
+    padding: 1rem;
+    background: white;
+    align-items: center;
+    font-family: "Work Sans";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 14px;
+    color: #545f7d;
+    th {
+      text-align: left;
+      padding: 1rem 0;
+      font-family: "Work Sans";
+      font-style: normal;
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 14px;
+      text-transform: uppercase;
+
+      color: #545f7d;
+      div {
         display: flex;
-        width: 100%;
+        align-items: center;
+        width: fit-content;
+        margin: 0;
+        p {
+          margin: 0 0.3rem;
+        }
+      }
     }
+    td {
+      // color: $color_2;
+      padding: 0.5rem 0;
+      font-family: "Work Sans";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 16px;
+      color: #545f7d;
+
+      img {
+        width: 1.5rem;
+        height: 1.5rem;
+        padding: 0 0.5rem 0 0;
+      }
+    }
+  }
 }
