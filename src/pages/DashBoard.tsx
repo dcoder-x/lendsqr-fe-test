@@ -19,7 +19,7 @@ const DashBoard = () => {
                 <Routes>
                     <Route index path='user' element={<User/>} />
                     <Route path='/' element={<User/>} />
-                    <Route path='user' element={<UserDetails/>} />
+                    <Route path='userdetails' element={<UserDetails/>} />
                 </Routes>
             </section>
         </section>

@@ -5,13 +5,16 @@ import "../styles/user.scss";
 import axios from "axios";
 import { ReactSVG } from "react-svg";
 import { assets } from "../assets";
+import { useNavigate} from 'react-router-dom'
 const User = () => {
   //tracking axios reponse state
   const [records, setRecords] = useState<object[]>();
   const [filteredRecords, setFilteredRecords] = useState<object[]>();
-  const [limit, setLimit] = useState<number>(5);
+  const [limit, setLimit] = useState<number>(10);
   const [low_Range_Multiplier, setLowRangeMultiplier] = useState<number>(0);
   const [high_Range_Multiplier, setHighRangeMultiplier] = useState<number>(1);
+
+  const navigate = useNavigate()
 
   //this converts createdAt value to date string
   function getDateJoined(date: Date): any {
@@ -27,8 +30,8 @@ const User = () => {
         const response = await axios.get(
           "https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users"
         );
-        console.log(response.data);
         setRecords(response.data);
+        window.localStorage.setItem('users',JSON.stringify(response.data))
       } catch (error: any) {
         console.error(error);
       }
@@ -48,10 +51,41 @@ const User = () => {
         }
       );
       setFilteredRecords(filteredRecords);
-      console.log(filteredRecords);
     }
     userRange();
   }, [records, limit, low_Range_Multiplier, high_Range_Multiplier]);
+
+  //this function controls the set of table data shown
+  const [firstThreeNumbers, setFirstThreeNumbers] = useState([1, 2, 3]);
+
+  const maxPageNumber = records?.length / limit;
+
+  function previousPage() {
+    if (filteredRecords && low_Range_Multiplier > 0) {
+      setLowRangeMultiplier(low_Range_Multiplier - 1);
+      setHighRangeMultiplier(high_Range_Multiplier - 1);
+      const newNumbersArray: number[] = [];
+      firstThreeNumbers.map((number) => {
+        if (number + 1 > 0) {
+          newNumbersArray.push(number - 1);
+          setFirstThreeNumbers(newNumbersArray);
+        }
+      });
+    }
+  }
+  function nextPage() {
+    if (filteredRecords && high_Range_Multiplier < maxPageNumber) {
+      setLowRangeMultiplier(low_Range_Multiplier + 1);
+      setHighRangeMultiplier(high_Range_Multiplier + 1);
+      const newNumbersArray: number[] = [];
+      firstThreeNumbers.map((number) => {
+        if (number + 1 < maxPageNumber) {
+          newNumbersArray.push(number + 1);
+          setFirstThreeNumbers(newNumbersArray);
+        }
+      });
+    }
+  }
 
   //array to hold table headers
   const tableHeads: string[] = [
@@ -62,31 +96,6 @@ const User = () => {
     "Date joined",
     "Status",
   ];
-
-  //table page number control function
-  const [firstThreeNumbers, setFirstThreeNumbers] = useState([1, 2, 3]);
-  function previousPage() {
-    if (filteredRecords && low_Range_Multiplier > 0) {
-      setLowRangeMultiplier(low_Range_Multiplier - 1);
-      setHighRangeMultiplier(high_Range_Multiplier - 1);
-      const decrementFirstThree = firstThreeNumbers.map((number) => {
-        const newNumbersArray: number[] = [];
-        newNumbersArray.push(number--);
-        setFirstThreeNumbers(newNumbersArray);
-      });
-    }
-  }
-  function nextPage() {
-    if (filteredRecords && high_Range_Multiplier < filteredRecords?.length) {
-      setLowRangeMultiplier(low_Range_Multiplier + 1);
-      setHighRangeMultiplier(high_Range_Multiplier + 1);
-      const decrementFirstThree = firstThreeNumbers.map((number) => {
-        const newNumbersArray: number[] = [];
-        newNumbersArray.push(number++);
-        setFirstThreeNumbers(newNumbersArray);
-      });
-    }
-  }
 
   //returned JSX
   return (
@@ -123,7 +132,9 @@ const User = () => {
             {filteredRecords?.map((record, i) => {
               return (
                 <>
-                  <tr>
+                  <tr onClick={()=>{
+                    navigate('userdetails',{state:{id:record.id}})
+                  }}>
                     <td>{record.orgName}</td>
                     <td>{record.userName}</td>
                     <td>{record.email}</td>
@@ -155,13 +166,18 @@ const User = () => {
             </select>
             <p>out of {records?.length}</p>
           </div>
-          <div className="table-page-control">
-            <div className="page-btn" onClick={() => previousPage()}>&larr;</div>
-            <p>{firstThreeNumbers[0]},</p> <p>{firstThreeNumbers[1]},</p>{" "}
-            <p>{firstThreeNumbers[2]},</p>{" "}
-            <p>{` ... ${filteredRecords?.length}`}</p>
-            <div className="page-btn" onClick={() => nextPage()}>&rarr;</div>
-          </div>
+          {maxPageNumber > 1 ? (
+            <div className="table-page-control">
+              <div className="page-btn" onClick={() => previousPage()}>
+                &larr;
+              </div>
+              <p>{firstThreeNumbers[0]},</p> <p>{firstThreeNumbers[1]},</p>{" "}
+              <p>{firstThreeNumbers[2]},</p> <p>{` ... ${maxPageNumber}`}</p>
+              <div className="page-btn" onClick={() => nextPage()}>
+                &rarr;
+              </div>
+            </div>
+          ) : null}
         </div>
       </section>
     </div>

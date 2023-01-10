@@ -12,7 +12,7 @@
   .users {
     display: flex;
     width: 100%;
-	justify-content: space-between;
+    justify-content: space-between;
   }
   table {
     width: 100%;
@@ -57,6 +57,9 @@
       line-height: 16px;
       color: #545f7d;
     }
+	tr:hover{
+		background-color:rgba(57, 205, 204, 0.1);
+	}
   }
   .table-navigators {
     display: flex;
@@ -89,6 +92,28 @@
 
         color: #213f7d;
       }
+    }
+  }
+  .table-page-control {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .page-btn {
+      background: rgba(33, 63, 125, 0.1);
+      border-radius: 4px;
+      font-size: smaller;
+	  text-align: center;
+      padding: 0.1rem 0.3rem;
+	  cursor: pointer;
+    }
+    p {
+      font-family: "Work Sans";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 16px;
+      color: #545f7d;
+	  margin: 0 1rem;
     }
   }
 }
