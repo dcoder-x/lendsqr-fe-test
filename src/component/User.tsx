@@ -19,7 +19,6 @@ const User = () => {
     return formatedDate;
   }
 
-  
   //useEffect hook to handle axios request
   useEffect(() => {
     //declare function to fetch user from api endpoint
@@ -37,8 +36,7 @@ const User = () => {
     fetchUser();
   }, []);
 
-
-//this is the algorithm to control the number of users shown managed by useEffect 
+  //this is the algorithm to control the number of users shown managed by useEffect
   useEffect(() => {
     function userRange() {
       const lower_Range: number = limit * low_Range_Multiplier;
@@ -50,9 +48,9 @@ const User = () => {
         }
       );
       setFilteredRecords(filteredRecords);
-      console.log(filteredRecords)
+      console.log(filteredRecords);
     }
-    userRange()
+    userRange();
   }, [records, limit, low_Range_Multiplier, high_Range_Multiplier]);
 
   //array to hold table headers
@@ -64,6 +62,31 @@ const User = () => {
     "Date joined",
     "Status",
   ];
+
+  //table page number control function
+  const [firstThreeNumbers, setFirstThreeNumbers] = useState([1, 2, 3]);
+  function previousPage() {
+    if (filteredRecords && low_Range_Multiplier > 0) {
+      setLowRangeMultiplier(low_Range_Multiplier - 1);
+      setHighRangeMultiplier(high_Range_Multiplier - 1);
+      const decrementFirstThree = firstThreeNumbers.map((number) => {
+        const newNumbersArray: number[] = [];
+        newNumbersArray.push(number--);
+        setFirstThreeNumbers(newNumbersArray);
+      });
+    }
+  }
+  function nextPage() {
+    if (filteredRecords && high_Range_Multiplier < filteredRecords?.length) {
+      setLowRangeMultiplier(low_Range_Multiplier + 1);
+      setHighRangeMultiplier(high_Range_Multiplier + 1);
+      const decrementFirstThree = firstThreeNumbers.map((number) => {
+        const newNumbersArray: number[] = [];
+        newNumbersArray.push(number++);
+        setFirstThreeNumbers(newNumbersArray);
+      });
+    }
+  }
 
   //returned JSX
   return (
@@ -114,10 +137,13 @@ const User = () => {
         </table>
         <div className="table-navigators">
           <div className="table-length">
-            <p>
-              showing
-            </p>
-            <select name="" id="" onChange={(e)=>setLimit(parseInt(e.target.value))} >
+            <p>showing</p>
+            <select
+              name=""
+              defaultValue={limit}
+              id=""
+              onChange={(e) => setLimit(parseInt(e.target.value))}
+            >
               <optgroup>
                 <option value="5">5</option>
                 <option value="10">10</option>
@@ -127,9 +153,14 @@ const User = () => {
                 <option value="100">100</option>
               </optgroup>
             </select>
-            <p>
-              out of {records?.length}
-            </p>
+            <p>out of {records?.length}</p>
+          </div>
+          <div className="table-page-control">
+            <div className="page-btn" onClick={() => previousPage()}>&larr;</div>
+            <p>{firstThreeNumbers[0]},</p> <p>{firstThreeNumbers[1]},</p>{" "}
+            <p>{firstThreeNumbers[2]},</p>{" "}
+            <p>{` ... ${filteredRecords?.length}`}</p>
+            <div className="page-btn" onClick={() => nextPage()}>&rarr;</div>
           </div>
         </div>
       </section>
