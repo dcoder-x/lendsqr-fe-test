@@ -9,33 +9,18 @@ const User = () => {
   //tracking axios reponse state
   const [records, setRecords] = useState<object[]>();
   const [filteredRecords, setFilteredRecords] = useState<object[]>();
-  const [limit, setLimit] = useState<number>(15);
+  const [limit, setLimit] = useState<number>(5);
   const [low_Range_Multiplier, setLowRangeMultiplier] = useState<number>(0);
   const [high_Range_Multiplier, setHighRangeMultiplier] = useState<number>(1);
 
   //this converts createdAt value to date string
   function getDateJoined(date: Date): any {
-    const formatedDate= new Date(date).toDateString()
-    return formatedDate ;
+    const formatedDate = new Date(date).toDateString();
+    return formatedDate;
   }
 
-  //this is the algorithm to control the number of users shown
-  useCallback(
-    function userRange() {
-      const lower_Range: number = limit * low_Range_Multiplier;
-      const higher_Range: number = limit * high_Range_Multiplier;
-
-      const filteredRecords: object[] | undefined = records?.filter(
-        (record, index) => {
-          return index >= lower_Range && index <= higher_Range;
-        }
-      );
-      setFilteredRecords(filteredRecords);
-    },
-    [limit, low_Range_Multiplier, high_Range_Multiplier]
-  );
-
-  //useEffect hook
+  
+  //useEffect hook to handle axios request
   useEffect(() => {
     //declare function to fetch user from api endpoint
     async function fetchUser() {
@@ -50,22 +35,25 @@ const User = () => {
       }
     }
     fetchUser();
+  }, []);
+
+
+//this is the algorithm to control the number of users shown managed by useEffect 
+  useEffect(() => {
     function userRange() {
       const lower_Range: number = limit * low_Range_Multiplier;
       const higher_Range: number = limit * high_Range_Multiplier;
 
       const filteredRecords: object[] | undefined = records?.filter(
         (record, index) => {
-          console.log(index,lower_Range,higher_Range)
-
-          return index >= lower_Range && index <= higher_Range;
+          return index >= lower_Range && index < higher_Range;
         }
       );
       setFilteredRecords(filteredRecords);
       console.log(filteredRecords)
     }
     userRange()
-  }, [records,limit, low_Range_Multiplier, high_Range_Multiplier]);
+  }, [records, limit, low_Range_Multiplier, high_Range_Multiplier]);
 
   //array to hold table headers
   const tableHeads: string[] = [
@@ -124,6 +112,26 @@ const User = () => {
             })}
           </tbody>
         </table>
+        <div className="table-navigators">
+          <div className="table-length">
+            <p>
+              showing
+            </p>
+            <select name="" id="" onChange={(e)=>setLimit(parseInt(e.target.value))} >
+              <optgroup>
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="20">20</option>
+                <option value="50">50</option>
+                <option value="80">80</option>
+                <option value="100">100</option>
+              </optgroup>
+            </select>
+            <p>
+              out of {records?.length}
+            </p>
+          </div>
+        </div>
       </section>
     </div>
   );
