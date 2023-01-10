@@ -1,0 +1,196 @@
+$textColorBold: rgba(33, 63, 125, 1);
+$textColorLight: rgba(84, 95, 125, 1);
+$tabHeaderGreen: rgba(57, 205, 204, 1);
+
+@mixin flex($flexDirection, $alignItems, $justifyContent) {
+  display: flex;
+  align-items: $alignItems;
+  flex-direction: $flexDirection;
+  justify-content: $justifyContent;
+}
+@mixin boldText($fontSize: 22px, $fontWeight: 500, $color: $textColorBold) {
+  font-family: "Work Sans";
+  font-style: normal;
+  font-weight: $fontWeight;
+  font-size: $fontSize;
+  line-height: 26px;
+  color: $color;
+}
+
+@mixin lightText {
+  font-family: "Work Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  color: $textColorLight;
+}
+
+#user-details {
+  width: 90%;
+  overflow-x: hidden;
+  .page-nav {
+    @include flex(row, center, start);
+
+    p {
+      margin-right: 1rem;
+      font-family: "Work Sans";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 19px;
+      color: $textColorLight;
+      cursor: pointer;
+      &:nth-child(1) {
+        font-size: 30px;
+        color: $textColorBold;
+        cursor: pointer;
+      }
+    }
+  }
+  .page-header {
+    @include flex(row, center, space-between);
+    p {
+      font-family: "Work Sans";
+      font-style: normal;
+      font-weight: 500;
+      font-size: 24px;
+      line-height: 28px;
+      color: $textColorBold;
+    }
+    button {
+      &:nth-child(1) {
+        border: 1px solid #e4033b;
+        color: #e4033b;
+        &:hover {
+          background: #e4033b;
+          color: white;
+        }
+      }
+      &:nth-child(2) {
+        border: 1px solid $tabHeaderGreen;
+        color: $tabHeaderGreen;
+        margin: 0;
+        &:hover {
+          background: $tabHeaderGreen;
+          color: #ffffff;
+        }
+      }
+
+      border-radius: 8px;
+      background-color: transparent;
+      margin: 0 1rem;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+    }
+  }
+  .profile-header {
+    background: #ffffff;
+    width: 100%;
+    border: 1px solid rgba(33, 63, 125, 0.06);
+    box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+    padding: 1rem;
+    border-radius: 4px;
+    padding-right: 0;
+    .user-header {
+      @include flex(row, center, start);
+
+      .section {
+        margin-right: 2rem;
+      }
+      hr {
+        height: 100%;
+        width: 1px;
+      }
+      .user {
+        @include flex(row, center, space-between);
+        .real-name {
+          @include boldText();
+        }
+        .userName {
+          @include lightText();
+        }
+        p {
+          margin-top: 0;
+          margin: 1rem;
+        }
+        img {
+          border-radius: 50%;
+        }
+      }
+      .user-tier {
+        p {
+          @include boldText($fontWeight: 400);
+          margin: 0;
+          margin-bottom: 1rem;
+        }
+        .stars {
+          @include flex(row, center, center);
+        }
+      }
+      .account-details {
+        p {
+          margin: 0;
+        }
+        .amount {
+          @include boldText();
+          margin-bottom: 1rem;
+        }
+        .bank {
+          @include flex(row, center, center);
+          @include lightText();
+        }
+      }
+    }
+  }
+  .profile-body {
+    background: #ffffff;
+    border: 1px solid rgba(33, 63, 125, 0.06);
+    box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+    border-radius: 4px;
+    padding: 1rem;
+    .profile-section {
+      .section-title {
+        font-family: "Work Sans";
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 19px;
+        /* identical to box height */
+
+        color: #213f7d;
+      }
+      .records {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        // justify-content: space-between;
+        width: 100%;
+        .field {
+          // width: 20%;
+          margin: 1rem 0;
+          margin-right: 2rem;
+        }
+        .title {
+          font-family: "Work Sans";
+          font-style: normal;
+          font-weight: 400;
+          font-size: 12px;
+          line-height: 14px;
+          text-transform: uppercase;
+          color: #545f7d;
+        }
+        .data {
+          font-family: "Work Sans";
+          font-style: normal;
+          font-weight: 500;
+          font-size: 16px;
+          line-height: 19px;
+          /* identical to box height */
+
+          color: #545f7d;
+        }
+      }
+    }
+  }
+}

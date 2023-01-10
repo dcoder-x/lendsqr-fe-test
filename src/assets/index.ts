@@ -8,6 +8,8 @@ import activeusers from "./icons/activeusers.svg";
 import usersvg from "./icons/users.svg";
 import userswithloan from "./icons/userswithloan.svg";
 import userswithsavings from "./icons/userswithsavings.svg";
+import star from "./icons/star.svg";
+import starfilled from "./icons/starfilled.svg";
 import users from "./icons/users.png";
 import guarantors from "./icons/guanrantors.png";
 import karma from "./icons/karma.png";
@@ -51,7 +53,9 @@ export const assets = {
     userswithloan,
     userswithsavings,
     activeusers,
-    filter
+    filter,
+    star,
+    starfilled
   },
   images: {
     banner: Banner,

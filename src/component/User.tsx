@@ -5,7 +5,10 @@ import "../styles/user.scss";
 import axios from "axios";
 import { ReactSVG } from "react-svg";
 import { assets } from "../assets";
-import { useNavigate} from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
+import Lottie from "react-lottie";
+import Loader from "../assets/lottie/loader.json";
+
 const User = () => {
   //tracking axios reponse state
   const [records, setRecords] = useState<object[]>();
@@ -14,7 +17,7 @@ const User = () => {
   const [low_Range_Multiplier, setLowRangeMultiplier] = useState<number>(0);
   const [high_Range_Multiplier, setHighRangeMultiplier] = useState<number>(1);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   //this converts createdAt value to date string
   function getDateJoined(date: Date): any {
@@ -31,7 +34,7 @@ const User = () => {
           "https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users"
         );
         setRecords(response.data);
-        window.localStorage.setItem('users',JSON.stringify(response.data))
+        window.localStorage.setItem("users", JSON.stringify(response.data));
       } catch (error: any) {
         console.error(error);
       }
@@ -119,7 +122,7 @@ const User = () => {
             <tr>
               {tableHeads.map((th, i) => {
                 return (
-                  <th>
+                  <th key={i}>
                     <div>
                       <p>{th}</p> <ReactSVG src={assets.icons.filter} />
                     </div>
@@ -132,9 +135,12 @@ const User = () => {
             {filteredRecords?.map((record, i) => {
               return (
                 <>
-                  <tr onClick={()=>{
-                    navigate('userdetails',{state:{id:record.id}})
-                  }}>
+                  <tr
+                    key={i}
+                    onClick={() => {
+                      navigate("userdetails", { state: { id: record.id } });
+                    }}
+                  >
                     <td>{record.orgName}</td>
                     <td>{record.userName}</td>
                     <td>{record.email}</td>
@@ -146,6 +152,15 @@ const User = () => {
             })}
           </tbody>
         </table>
+        {!filteredRecords ? (
+            <Lottie
+              options={{
+                animationData: Loader,
+                loop: true,
+              }}
+              width={'70%'}
+            />
+          ) : null}
         <div className="table-navigators">
           <div className="table-length">
             <p>showing</p>
