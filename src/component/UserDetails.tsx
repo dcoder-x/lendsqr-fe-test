@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from "react-router";
 import { ReactSVG } from "react-svg";
 import { assets } from "../assets";
 import "../styles/userDetails.scss";
+import avatar from '../assets/images/avatar2.png'
 
 const UserDetails = () => {
   const navigate = useNavigate();
@@ -38,7 +39,7 @@ const UserDetails = () => {
       <div className="profile-header">
         <div className="user-header">
           <div className="user section">
-            <img className="avatar" src={userDetail[0].profile.avatar} alt="" />
+            <img className="avatar" src={userDetail[0].profile.avatar||avatar} alt="" />
             <div className="name">
               <div className="real-name">
                 <p>
@@ -112,6 +113,77 @@ const UserDetails = () => {
             },
           ]}
         />
+        <ProfileSection
+          profileTitle="Education and Employment"
+          records={[
+            {
+              fieldTitle: "Level of Education",
+              data: `${userDetail[0].education.level} ${userDetail[0].profile.lastName}`,
+            },
+            {
+              fieldTitle: "Employment Status",
+              data: `${userDetail[0].education.employmentStatus}`,
+            },
+            {
+              fieldTitle: "Sector of Employment",
+              data: `${userDetail[0].education.sector}`,
+            },
+            {
+              fieldTitle: "Duration of Employment",
+              data: `${userDetail[0].education.duration}`,
+            },
+            {
+              fieldTitle: "Office email",
+              data: `${userDetail[0].education.officeEmail}`,
+            },
+            {
+              fieldTitle: "Monthly Income",
+              data: `N${userDetail[0].education.monthlyIncome[0]}- N${userDetail[0].education.monthlyIncome[1]} `,
+            },
+            {
+              fieldTitle: "Loan Repayment",
+              data: `N${userDetail[0].education.loanRepayment}`,
+            },
+          ]}
+        />
+        <ProfileSection
+          profileTitle="Socials"
+          records={[
+            {
+              fieldTitle: "Facebook",
+              data: `${userDetail[0].socials.facebook}`,
+            },
+            {
+              fieldTitle: "Instagram",
+              data: `${userDetail[0].socials.instagram}`,
+            },
+            {
+              fieldTitle: "Twitter",
+              data: `${userDetail[0].socials.twitter}`,
+            },
+          ]}
+        />
+        <ProfileSection
+          profileTitle="Personal Information"
+          records={[
+            {
+              fieldTitle: "Full Name",
+              data: `${userDetail[0].guarantor.firstName} ${userDetail[0].guarantor.lastName}`,
+            },
+            {
+              fieldTitle: "Phone Number",
+              data: `${userDetail[0].guarantor.phoneNumber}`,
+            },
+            {
+              fieldTitle: "Email Address",
+              data: `${userDetail[0].guarantor?.email}`,
+            },
+            {
+              fieldTitle: "Relationship",
+              data: `${userDetail[0].guarantor.gender=='male'?'Brother':'Sister'}`,
+            },
+          ]}
+        />{" "}
       </div>
     </main>
   );
@@ -128,13 +200,14 @@ const ProfileSection = ({ children, profileTitle, records }: props) => {
       <div className="records">
         {records.map((field, i) => {
           return (
-            <div className="field">
+            <div className="field" key={i}>
               <p className="title">{field.fieldTitle}</p>
               <p className="data">{field.data}</p>
             </div>
           );
         })}
       </div>
+      <hr />
     </div>
   );
 };

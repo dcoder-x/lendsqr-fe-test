@@ -26,6 +26,8 @@ import dashboard from "./icons/dashboard.png";
 import services from "./icons/services.png";
 import auditor from "./icons/auditor.png";
 import Union from "./icons/Union.png";
+import menu from './icons/menu.svg'
+
 
 export const assets = {
   icons: {
@@ -55,7 +57,8 @@ export const assets = {
     activeusers,
     filter,
     star,
-    starfilled
+    starfilled,
+    menu
   },
   images: {
     banner: Banner,

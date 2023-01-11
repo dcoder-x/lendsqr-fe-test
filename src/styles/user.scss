@@ -19,8 +19,8 @@ $background-color_1: rgba(57, 205, 204, 0.1);
     width: 100%;
     justify-content: space-between;
   }
-  .table{
-	background-color: #fff;
+  .table {
+    background-color: #fff;
   }
   table {
     width: 100%;
@@ -54,22 +54,40 @@ $background-color_1: rgba(57, 205, 204, 0.1);
         }
       }
     }
-	tr {
-		cursor: pointer;
+    tr {
+      cursor: pointer;
       &:hover {
         background-color: $background-color_1;
       }
     }
-  td {
-    // color: $color_2;
-    padding: 0.5rem 0;
-    font-family: $font-family_1;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 16px;
-    color: $color_2;
-  }
+    td {
+      // color: $color_2;
+      padding: 0.5rem;
+      font-family: $font-family_1;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 16px;
+      color: $color_2;
+      .status {
+        padding: 0.3rem 0.5rem;
+        &.pending {
+          border-radius: 50px;
+          background-color: rgba(233, 178, 0, 0.1);
+          color: rgba(233, 178, 0, 1);
+        }
+        &.active {
+          border-radius: 50px;
+          background-color: rgba(57, 205, 98, 0.1);
+          color: rgba(57, 205, 98, 1);
+        }
+        &.inactive {
+          border-radius: 50px;
+          background-color: rgba(0, 0, 0, 0.1);
+          color: rgb(0, 0, 0);
+        }
+      }
+    }
   }
   .table-page-control {
     display: flex;
@@ -101,7 +119,7 @@ $background-color_1: rgba(57, 205, 204, 0.1);
         color: $color_2;
       }
     }
-    
+
     select {
       background: rgba(33, 63, 125, 0.1);
       border-radius: 4px;
@@ -123,6 +141,64 @@ $background-color_1: rgba(57, 205, 204, 0.1);
       line-height: 16px;
       color: $color_2;
       margin: 0 1rem;
+    }
+  }
+  .filter {
+    background-color: white;
+    position: absolute;
+    top: 20%;
+    left: 20%;
+    width: 25%;
+    min-width: 300px;
+    padding: 1rem;
+    background: #ffffff;
+    border: 1px solid rgba(84, 95, 125, 0.14);
+    box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+    border-radius: 4px;
+    label {
+      font-family: "Work Sans";
+      font-style: normal;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 16px;
+
+      color: #545f7d;
+    }
+    .close {
+      // padding: .3rem;
+      width: fit-content;
+      // border-radius: 50%;
+      // background-color: rgba(57, 205, 204, 1);
+      color: rgba(57, 205, 204, 1);
+      font-size: larger;
+	  cursor: pointer;
+    }
+    .input {
+      margin: 0.5rem 0;
+      background: #ffffff;
+      border: 1px solid #21407d50;
+      border-radius: 8px;
+      width: 100%;
+      min-height: 40px;
+    }
+    .buttons {
+		button{
+			margin: 0.5rem;
+			padding: 0.5rem 1rem;
+			&:nth-child(1) {
+				border: 1px solid #545f7d;
+				border-radius: 8px;
+				background-color: white;
+				color: #545f7d;
+			  }
+			  &:nth-child(2) {
+				border: 1px solid rgba(57, 205, 204, 1);
+				border-radius: 8px;
+				background-color: rgba(57, 205, 204, 1);
+				color: #ffffff;
+			  }
+		}
+      
     }
   }
 }

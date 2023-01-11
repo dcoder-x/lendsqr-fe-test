@@ -116,6 +116,7 @@ $tabHeaderGreen: rgba(57, 205, 204, 1);
         }
         img {
           border-radius: 50%;
+          width: 50%;
         }
       }
       .user-tier {
@@ -168,7 +169,7 @@ $tabHeaderGreen: rgba(57, 205, 204, 1);
         width: 100%;
         .field {
           // width: 20%;
-          margin: 1rem 0;
+        //   margin: 1rem 0;
           margin-right: 2rem;
         }
         .title {

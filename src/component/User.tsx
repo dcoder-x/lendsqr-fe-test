@@ -8,6 +8,7 @@ import { assets } from "../assets";
 import { useNavigate } from "react-router-dom";
 import Lottie from "react-lottie";
 import Loader from "../assets/lottie/loader.json";
+import Filter from "./Filter";
 
 const User = () => {
   //tracking axios reponse state
@@ -16,6 +17,7 @@ const User = () => {
   const [limit, setLimit] = useState<number>(10);
   const [low_Range_Multiplier, setLowRangeMultiplier] = useState<number>(0);
   const [high_Range_Multiplier, setHighRangeMultiplier] = useState<number>(1);
+  const [showFilter,setShowFilter] = useState<boolean>(false)
 
   const navigate = useNavigate();
 
@@ -63,6 +65,7 @@ const User = () => {
 
   const maxPageNumber = records?.length / limit;
 
+  //display previous table page by decrementing range Multiplier
   function previousPage() {
     if (filteredRecords && low_Range_Multiplier > 0) {
       setLowRangeMultiplier(low_Range_Multiplier - 1);
@@ -76,6 +79,7 @@ const User = () => {
       });
     }
   }
+  //displays next table page by incrementing range multipliers
   function nextPage() {
     if (filteredRecords && high_Range_Multiplier < maxPageNumber) {
       setLowRangeMultiplier(low_Range_Multiplier + 1);
@@ -124,7 +128,7 @@ const User = () => {
                 return (
                   <th key={i}>
                     <div>
-                      <p>{th}</p> <ReactSVG src={assets.icons.filter} />
+                      <p>{th}</p> <ReactSVG src={assets.icons.filter} onClick={e=>{setShowFilter(true)}} />
                     </div>
                   </th>
                 );
@@ -146,6 +150,8 @@ const User = () => {
                     <td>{record.email}</td>
                     <td>{record.profile.phoneNumber}</td>
                     <td>{getDateJoined(record.createdAt)}</td>
+                    <td><div className={`status ${record.id%2?'pending':'active'} `}>{record?.id%2?'pending':'active'} </div></td>
+                    <td><ReactSVG src={assets.icons.menu}/></td>
                   </tr>
                 </>
               );
@@ -194,6 +200,7 @@ const User = () => {
             </div>
           ) : null}
         </div>
+        <Filter show={showFilter} onClick={(e)=>setShowFilter(false)} />
       </section>
     </div>
   );
