@@ -27,6 +27,10 @@ import services from "./icons/services.png";
 import auditor from "./icons/auditor.png";
 import Union from "./icons/Union.png";
 import menu from './icons/menu.svg'
+import view from './icons/view.svg'
+import activate from './icons/activate.svg'
+import blacklist from './icons/blacklist.svg'
+
 
 
 export const assets = {
@@ -58,7 +62,10 @@ export const assets = {
     filter,
     star,
     starfilled,
-    menu
+    menu,
+    view,
+    activate,
+    blacklist,
   },
   images: {
     banner: Banner,

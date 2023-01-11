@@ -12,12 +12,14 @@ import Filter from "./Filter";
 
 const User = () => {
   //tracking axios reponse state
-  const [records, setRecords] = useState<object[]>();
-  const [filteredRecords, setFilteredRecords] = useState<object[]>();
+  const [records, setRecords] = useState<any>();
+  const [filteredRecords, setFilteredRecords] = useState<any>();
   const [limit, setLimit] = useState<number>(10);
   const [low_Range_Multiplier, setLowRangeMultiplier] = useState<number>(0);
   const [high_Range_Multiplier, setHighRangeMultiplier] = useState<number>(1);
   const [showFilter,setShowFilter] = useState<boolean>(false)
+  const [showMenu,setShowMenu] = useState<boolean>(false)
+
 
   const navigate = useNavigate();
 
@@ -51,7 +53,7 @@ const User = () => {
       const higher_Range: number = limit * high_Range_Multiplier;
 
       const filteredRecords: object[] | undefined = records?.filter(
-        (record, index) => {
+        (record:any, index:number) => {
           return index >= lower_Range && index < higher_Range;
         }
       );
@@ -136,7 +138,7 @@ const User = () => {
             </tr>
           </thead>
           <tbody>
-            {filteredRecords?.map((record, i) => {
+            {filteredRecords?.map((record:any, i:number) => {
               return (
                 <>
                   <tr
@@ -151,8 +153,28 @@ const User = () => {
                     <td>{record.profile.phoneNumber}</td>
                     <td>{getDateJoined(record.createdAt)}</td>
                     <td><div className={`status ${record.id%2?'pending':'active'} `}>{record?.id%2?'pending':'active'} </div></td>
-                    <td><ReactSVG src={assets.icons.menu}/></td>
+                    <td><ReactSVG onClick={e=>{setShowMenu(!showMenu)}} src={assets.icons.menu}/></td>
                   </tr>
+                  <div className="menu" style={{display:showMenu?'block':'none'}}>
+                    <div className="">
+                      <ReactSVG src={assets.icons.view}/>
+                      <p>
+                        View user
+                      </p>
+                    </div>
+                    <div className="">
+                      <ReactSVG src={ assets.icons.activate}/>
+                      <p>
+                        Blaclist user
+                      </p>
+                    </div>
+                    <div className="">
+                      <ReactSVG src={assets.icons.blacklist }/>
+                      <p>
+                        Activate user
+                      </p>
+                    </div>
+                  </div>
                 </>
               );
             })}
