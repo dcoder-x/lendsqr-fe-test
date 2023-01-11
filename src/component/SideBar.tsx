@@ -37,34 +37,6 @@ const SideBar = () => {
           })}
         </section>
       </main>
-      <main id="minSideBar" style={{display:showSideBar?'block':'none'}}>
-        <section className="nav-container">
-          <SideBarLink
-            name="Switch Organization"
-            icon={assets.icons.organizations}
-            after={assets.icons.down}
-          />
-          <div style={{ margin: "2rem 0" }}>
-            <SideBarLink name="Dashboard" icon={assets.icons.dashboard} />
-          </div>
-          {sideBarMenu.map((menu, index) => {
-            return (
-              <div className="menu-section">
-                <p className="title">{menu.title}</p>
-                {menu.sublinks.map((link, index) => {
-                  return (
-                    <SideBarLink
-                      icon={link.icon}
-                      name={link.name}
-                      link={link.link}
-                    />
-                  );
-                })}
-              </div>
-            );
-          })}
-        </section>
-      </main>
     </>
   );
 };
@@ -72,7 +44,7 @@ export const MinSideBar = ({show,close}:{show:boolean,close:React.MouseEventHand
   
   return (
     <>
-      <main id="minSideBar" style={{display:show?'block':'none'}}>
+      <main id="minSideBar" style={{width:show?'100%':'0%'}}>
         <div className="close" onClick={close}>
           &times;
         </div>

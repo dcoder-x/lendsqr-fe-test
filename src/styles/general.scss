@@ -73,12 +73,14 @@ $media-mobile-sm: "only screen and (max-width : 480px)";
     display: none;
   }
   #minSideBar{
-    width: 100%;
+    display: block;
+    transition: .7s ease-in-out;
     .close{
         top: 6rem;
         margin-left: 1rem;
         position: relative;
         font-size: 17px;
+        display: none;
     }
   }
   //dashboard
@@ -164,6 +166,8 @@ $media-mobile-sm: "only screen and (max-width : 480px)";
         .tab-header{
             font-size: 10px !important;
             margin-right: 1rem !important;
+            padding-bottom: 1rem !important;
+            margin-top: .5rem !important;
           }
       }
   }
