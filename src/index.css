@@ -4,6 +4,9 @@
     font-family: 'Avenir Next LT Pro', sans-serif;
     margin: 0;                                      
 }
+*::-webkit-scrollbar {width: 10px;background-color:#0b1120} 
+*::-webkit-scrollbar-track {background-color:#e2e8f0} 
+*::-webkit-scrollbar-thumb {border-radius: 1rem; background-color:#94a3b8}
 
 body{
     margin: 0;

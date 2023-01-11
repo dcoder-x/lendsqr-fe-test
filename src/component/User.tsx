@@ -11,7 +11,7 @@ import Loader from "../assets/lottie/loader.json";
 import Filter from "./Filter";
 
 const User = () => {
-  //tracking axios reponse state
+  //useState hook declaations to manage states
   const [records, setRecords] = useState<any>();
   const [filteredRecords, setFilteredRecords] = useState<any>();
   const [limit, setLimit] = useState<number>(10);
@@ -24,14 +24,19 @@ const User = () => {
   const navigate = useNavigate();
 
   //this converts createdAt value to date string
+
   function getDateJoined(date: Date): any {
     const formatedDate = new Date(date).toDateString();
     return formatedDate;
   }
 
   //useEffect hook to handle axios request
+
   useEffect(() => {
+
+
     //declare function to fetch user from api endpoint
+
     async function fetchUser() {
       try {
         const response = await axios.get(
@@ -117,7 +122,7 @@ const User = () => {
               icon={info.icon}
               description={info.description}
               value={info.value}
-              style={{ width: "20%" }}
+              // style={{ width: "20%" }}
             />
           );
         })}
@@ -155,7 +160,7 @@ const User = () => {
                     <td><div className={`status ${record.id%2?'pending':'active'} `}>{record?.id%2?'pending':'active'} </div></td>
                     <td><ReactSVG onClick={e=>{setShowMenu(!showMenu)}} src={assets.icons.menu}/></td>
                   </tr>
-                  <div className="menu" style={{display:showMenu?'block':'none'}}>
+                  {/* <div className="menu" style={{display:showMenu?'block':'none'}}>
                     <div className="">
                       <ReactSVG src={assets.icons.view}/>
                       <p>
@@ -174,7 +179,7 @@ const User = () => {
                         Activate user
                       </p>
                     </div>
-                  </div>
+                  </div> */}
                 </>
               );
             })}

@@ -26,8 +26,9 @@ import dashboard from "./icons/dashboard.png";
 import services from "./icons/services.png";
 import auditor from "./icons/auditor.png";
 import Union from "./icons/Union.png";
+import menuIcon from "./icons/menu.png";
 import menu from './icons/menu.svg'
-import view from './icons/view.svg'
+import view from './icons/eyes.svg'
 import activate from './icons/activate.svg'
 import blacklist from './icons/blacklist.svg'
 
@@ -66,6 +67,7 @@ export const assets = {
     view,
     activate,
     blacklist,
+    menuIcon
   },
   images: {
     banner: Banner,

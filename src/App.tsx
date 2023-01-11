@@ -4,6 +4,7 @@ import "./App.css";
 import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import Login from "./pages/Login";
 import DashBoard from "./pages/DashBoard";
+import './styles/general.scss'
 
 function App() {
   const [count, setCount] = useState(0);

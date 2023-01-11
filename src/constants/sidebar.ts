@@ -15,7 +15,7 @@ export const sideBarMenu: menu[] = [
     sublinks: [
       {
         name: "User",
-        link: "user",
+        link: "./",
         icon:  assets.icons.users,
       },
       {

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { ReactSVG } from "react-svg";
 import { Link } from "react-router-dom";
 import "../styles/sideBar.scss";
@@ -6,29 +6,104 @@ import { assets } from "../assets";
 import { sideBarMenu } from "../constants/sidebar";
 
 const SideBar = () => {
+  const [showSideBar, setshowSideBar] = useState<boolean>(false)
   return (
-    <main id="sideBar">
-      <section className="nav-container">
-        <SideBarLink
-          name="Switch Organization"
-          icon={assets.icons.organizations}
-          after={assets.icons.down}
-        />
-        <div style={{ margin: "2rem 0" }}>
-          <SideBarLink name="Dashboard" icon={assets.icons.dashboard} />
+    <>
+      <main id="sideBar">
+        <section className="nav-container">
+          <SideBarLink
+            name="Switch Organization"
+            icon={assets.icons.organizations}
+            after={assets.icons.down}
+          />
+          <div style={{ margin: "2rem 0" }}>
+            <SideBarLink name="Dashboard" icon={assets.icons.dashboard} />
+          </div>
+          {sideBarMenu.map((menu, index) => {
+            return (
+              <div className="menu-section">
+                <p className="title">{menu.title}</p>
+                {menu.sublinks.map((link, index) => {
+                  return (
+                    <SideBarLink
+                      icon={link.icon}
+                      name={link.name}
+                      link={link.link}
+                    />
+                  );
+                })}
+              </div>
+            );
+          })}
+        </section>
+      </main>
+      <main id="minSideBar" style={{display:showSideBar?'block':'none'}}>
+        <section className="nav-container">
+          <SideBarLink
+            name="Switch Organization"
+            icon={assets.icons.organizations}
+            after={assets.icons.down}
+          />
+          <div style={{ margin: "2rem 0" }}>
+            <SideBarLink name="Dashboard" icon={assets.icons.dashboard} />
+          </div>
+          {sideBarMenu.map((menu, index) => {
+            return (
+              <div className="menu-section">
+                <p className="title">{menu.title}</p>
+                {menu.sublinks.map((link, index) => {
+                  return (
+                    <SideBarLink
+                      icon={link.icon}
+                      name={link.name}
+                      link={link.link}
+                    />
+                  );
+                })}
+              </div>
+            );
+          })}
+        </section>
+      </main>
+    </>
+  );
+};
+export const MinSideBar = ({show,close}:{show:boolean,close:React.MouseEventHandler}) => {
+  
+  return (
+    <>
+      <main id="minSideBar" style={{display:show?'block':'none'}}>
+        <div className="close" onClick={close}>
+          &times;
         </div>
-        {sideBarMenu.map((menu, index) => {
-          return (
-            <div className="menu-section">
-              <p className="title">{menu.title}</p>
-              {menu.sublinks.map((link, index) => {
-                return <SideBarLink icon={link.icon} name={link.name} link={link.link}/> ;
-              })}
-            </div>
-          );
-        })}
-      </section>
-    </main>
+        <section className="nav-container">
+          <SideBarLink
+            name="Switch Organization"
+            icon={assets.icons.organizations}
+            after={assets.icons.down}
+          />
+          <div style={{ margin: "2rem 0" }}>
+            <SideBarLink name="Dashboard" icon={assets.icons.dashboard} />
+          </div>
+          {sideBarMenu.map((menu, index) => {
+            return (
+              <div className="menu-section">
+                <p className="title">{menu.title}</p>
+                {menu.sublinks.map((link, index) => {
+                  return (
+                    <SideBarLink
+                      icon={link.icon}
+                      name={link.name}
+                      link={link.link}
+                    />
+                  );
+                })}
+              </div>
+            );
+          })}
+        </section>
+      </main>
+    </>
   );
 };
 interface sidebar {
