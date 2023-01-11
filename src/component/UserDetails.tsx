@@ -12,7 +12,8 @@ const UserDetails = () => {
   if (!id) {
     navigate("../user");
   }
-  const users: any = JSON.parse(window.localStorage.getItem("users"));
+  const text = window.localStorage.getItem("users")
+  const users = text?JSON.parse(text):null;
   const userDetail = users?.filter((user: any) => {
     return user.id == id;
   });
