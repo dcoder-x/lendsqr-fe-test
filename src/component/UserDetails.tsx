@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from "react-router";
 import { ReactSVG } from "react-svg";
 import { assets } from "../assets";
 import "../styles/userDetails.scss";
-import avatar from '../assets/images/avatar2.png'
+import avatar from "../assets/images/avatar2.png";
 
 const UserDetails = () => {
   const navigate = useNavigate();
@@ -12,8 +12,8 @@ const UserDetails = () => {
   if (!id) {
     navigate("../user");
   }
-  const text = window.localStorage.getItem("users")
-  const users = text?JSON.parse(text):null;
+  const text = window.localStorage.getItem("users");
+  const users = text ? JSON.parse(text) : null;
   const userDetail = users?.filter((user: any) => {
     return user.id == id;
   });
@@ -40,7 +40,11 @@ const UserDetails = () => {
       <div className="profile-header">
         <div className="user-header">
           <div className="user section">
-            <img className="avatar" src={userDetail[0].profile.avatar||avatar} alt="" />
+            <img
+              className="avatar"
+              src={userDetail[0].profile.avatar || avatar}
+              alt=""
+            />
             <div className="name">
               <div className="real-name">
                 <p>
@@ -74,7 +78,18 @@ const UserDetails = () => {
             </p>
           </div>
         </div>
-        <div className="user-tab-navigator"></div>
+        <div className="user-tab-navigator">
+          {[
+            "General details",
+            "Documents",
+            "Bank Details",
+            "Loans",
+            "Savings",
+            'App and System'
+          ].map((tab, i) => {
+            return <div key={i} className="tab-header">{tab}</div>;
+          })}
+        </div>
       </div>
       <div className="profile-body">
         <ProfileSection
@@ -181,7 +196,9 @@ const UserDetails = () => {
             },
             {
               fieldTitle: "Relationship",
-              data: `${userDetail[0].guarantor.gender=='male'?'Brother':'Sister'}`,
+              data: `${
+                userDetail[0].guarantor.gender == "male" ? "Brother" : "Sister"
+              }`,
             },
           ]}
         />{" "}
