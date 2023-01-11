@@ -159,7 +159,12 @@ $media-mobile-sm: "only screen and (max-width : 480px)";
                 font-size: 12px;
             }
           }
+          
         }
+        .tab-header{
+            font-size: 10px !important;
+            margin-right: 1rem !important;
+          }
       }
   }
 }
