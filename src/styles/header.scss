@@ -70,6 +70,10 @@
   .user-account {
     display: flex;
     align-items: center;
+    .avatar img{
+      border-radius: 50%;
+      width: 70%;
+    }
     .dropdown {
       display: flex;
       align-items: center;

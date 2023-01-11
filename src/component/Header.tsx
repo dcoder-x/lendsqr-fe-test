@@ -29,7 +29,7 @@ const Header = () => {
 
         <div className="link user-account">
           <div className="avatar">
-            <img src="" alt="" />
+            <img src={assets.icons.avatar} alt="" />
           </div>
           <div className="dropdown">
             <p className="username">

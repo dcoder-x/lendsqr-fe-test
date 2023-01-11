@@ -1,5 +1,6 @@
 import Logo from "./images/logo.png";
 import Banner from "./images/signinbanner.png";
+import avatar from "./images/avatar.png";
 import Search from "./icons/search.svg";
 import bell from "./icons/bell.svg";
 import filter from "./icons/filter.svg";
@@ -67,7 +68,8 @@ export const assets = {
     view,
     activate,
     blacklist,
-    menuIcon
+    menuIcon,
+    avatar
   },
   images: {
     banner: Banner,
