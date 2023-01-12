@@ -6,7 +6,7 @@ import { assets } from "../assets";
 import { sideBarMenu } from "../constants/sidebar";
 
 const SideBar = () => {
-  const [showSideBar, setshowSideBar] = useState<boolean>(false)
+  const [showSideBar, setshowSideBar] = useState<boolean>(false);
   return (
     <>
       <main id="sideBar">
@@ -40,15 +40,50 @@ const SideBar = () => {
     </>
   );
 };
-export const MinSideBar = ({show,close}:{show:boolean,close:React.MouseEventHandler}) => {
-  
+export const MobileSideBar = ({
+  show,
+  close,
+}: {
+  show: boolean;
+  close: React.MouseEventHandler;
+}) => {
   return (
     <>
-      <main id="minSideBar" style={{width:show?'100%':'0%'}}>
+      <main id="minSideBar" style={{ width: show ? "100%" : "0%" }}>
         <div className="close" onClick={close}>
           &times;
         </div>
         <section className="nav-container">
+          <div className="links">
+            <div className="link">
+              <a href="#">DOCS</a>
+            </div>
+            <div className="link">
+              <ReactSVG width={40} src={assets.icons.bell} />
+            </div>
+
+            <div className="link user-account">
+              <div className="avatar">
+                <img src={assets.icons.avatar} alt="" />
+              </div>
+              <div className="dropdown">
+                <p className="username">Ayomikun Faluyi</p>
+                <ReactSVG src={assets.icons.down} />
+              </div>
+            </div>
+          </div>
+          <div className="search">
+            <input
+              type="search"
+              placeholder="search for anything ..."
+              name=""
+              id=""
+            />
+            <button className="search-btn">
+              <ReactSVG src={assets.icons.search} />
+            </button>
+          </div>
+
           <SideBarLink
             name="Switch Organization"
             icon={assets.icons.organizations}

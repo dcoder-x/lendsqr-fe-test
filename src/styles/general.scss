@@ -5,93 +5,83 @@ $media-mobile: "only screen and (max-width : 600px)";
 $media-mobile-sm: "only screen and (max-width : 480px)";
 
 @media #{$media-desktop} {
-    .menu{
-        display: none;
-      }
+  .menu {
+    display: none;
+  }
 }
 @media #{$media-ltab} {
-    .menu{
-        display: none;
-      }
+  .menu {
+    display: none;
+  }
 }
 
 @media #{$media-tablet} {
-    //
-    #login{
-        .banner{
-            display: none;
-
-        }
-        .banner-section{
-            position: absolute;
-        }
-        .form-section{
-            width: 100%;
-            display: flex;
-            align-items: center;
-            .holder{
-                margin: 0;
-                text-align: center;
-                form{
-                    margin: auto;
-                }
-            }
-        }
+  //
+  #login {
+    .banner {
+      display: none;
     }
-    //nav
-    #nav{
-        .links{
-            margin-right: 0;
-            .link{
-                p{
-                    font-size: 13px;
-                }
-                &:nth-child(1){
-                    display: none;
-                }
-                &:nth-child(2){
-                    display: none;
-                }
-            }
-        }
-        .search{
-            // input{
-            //     display: none;
-            // }
-            position: absolute;
-            margin-top: 6rem;
-            right: 2%;
-            width: fit-content;
-        }
-
-        .logo{
-            width: 25%;
-        }
+    .banner-section {
+      position: absolute;
     }
+    .form-section {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      .holder {
+        margin: 0;
+        text-align: center;
+        form {
+          margin: auto;
+        }
+      }
+    }
+  }
+  //nav
+  #nav {
+    .links {
+      margin-right: 0;
+      .link {
+        p {
+          font-size: 13px;
+        }
+        &:nth-child(1) {
+          display: none;
+        }
+        &:nth-child(2) {
+          display: none;
+        }
+      }
+    }
+    .search {
+      display: none;
+    }
+    .link {
+      display: none;
+    }
+    .logo {
+      width: 25%;
+    }
+  }
   //sidebar
   #sideBar {
     display: none;
   }
-  #minSideBar{
+  #minSideBar {
     display: block;
-    transition: .7s ease-in-out;
-    .close{
-        top: 6rem;
-        margin-left: 1rem;
-        position: relative;
-        font-size: 17px;
-        display: none;
+    transition: 0.7s ease-in-out;
+    .close {
+      top: 6rem;
+      margin-left: 1rem;
+      position: relative;
+      font-size: 40px;
+      // display: none;
     }
   }
   //dashboard
   #dashboard {
-    .menu{
-        position: fixed;
-        display: block;
-        top: 3.8rem;
-        left: 2%;
-        z-index: 11;
-        width: fit-content;
+    .menu {
+      margin: 0 0.5rem;
     }
     .content {
       width: 100% !important;
@@ -106,12 +96,12 @@ $media-mobile-sm: "only screen and (max-width : 480px)";
     .table {
       overflow: scroll;
     }
-    .filter{
-        left: 5%;
-        top: 75%;
+    .filter {
+      left: 5%;
+      top: 75%;
     }
   }
-  //user details
+  //userdetails
   #user-details {
     .page-nav {
       p {
@@ -122,55 +112,59 @@ $media-mobile-sm: "only screen and (max-width : 480px)";
       }
     }
     .page-header {
-        p {
-          font-size: 14px;
+      p {
+        font-size: 14px;
+      }
+      button {
+        border-radius: 8px;
+        background-color: transparent;
+        margin: 0 1rem;
+        padding: 0.5rem 0.5rem;
+        font-size: 10px;
+        cursor: pointer;
+      }
+    }
+    .profile-header {
+      .user-header {
+        flex-wrap: wrap;
+        justify-content: center;
+        .user {
+          .real-name {
+            font-size: 14px;
+          }
+          .userName {
+            font-size: 12px;
+          }
         }
-        button {    
-          border-radius: 8px;
-          background-color: transparent;
-          margin: 0 1rem;
-          padding: 0.5rem .5rem;
-          font-size: 10px;
-          cursor: pointer;
+        .user-tier {
+          p {
+            font-size: 14px;
+          }
+        }
+        .account-details {
+          p {
+            margin: 0;
+          }
+          .amount {
+            font-size: 14px;
+          }
+          .bank {
+            font-size: 12px;
+          }
         }
       }
-      .profile-header {
-        .user-header {
-            flex-wrap: wrap;
-            justify-content: center ;
-          .user {
-            .real-name {
-             font-size: 14px;
-            }
-            .userName {
-              font-size: 12px;
-            }
-          }
-          .user-tier {
-            p {
-                font-size: 14px;
-            }
-          }
-          .account-details {
-            p {
-              margin: 0;
-            }
-            .amount {
-                font-size: 14px;
-            }
-            .bank {
-                font-size: 12px;
-            }
-          }
-          
-        }
-        .tab-header{
-            font-size: 10px !important;
-            margin-right: 1rem !important;
-            padding-bottom: 1rem !important;
-            margin-top: .5rem !important;
-          }
+      .tab-header {
+        font-size: 10px !important;
+        margin-right: 1rem !important;
+        padding-bottom: 1rem !important;
+        margin-top: 0.5rem !important;
       }
+    }
+  }
+  #user{
+    .tab-navigators{
+      flex-direction: column;
+    }
   }
 }
 

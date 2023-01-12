@@ -2,7 +2,7 @@ import React from "react";
 import { assets } from "../assets";
 import { ReactSVG } from "react-svg";
 import "../styles/header.scss";
-const Header = () => {
+const Header = ({menuToggle}:{menuToggle:React.MouseEventHandler}) => {
   return (
     <nav className="nav" id="nav">
       <div className="logo">
@@ -39,6 +39,8 @@ const Header = () => {
           </div>
         </div>
       </div>
+      <img src={assets.icons.menuIcon} className="menu" onClick={menuToggle}/>
+
     </nav>
   );
 };
