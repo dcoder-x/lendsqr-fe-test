@@ -9,11 +9,11 @@ $media-mobile-sm: "only screen and (max-width : 480px)";
     display: none;
   }
 }
-@media #{$media-ltab} {
-  .menu {
-    display: none;
-  }
-}
+// @media #{$media-ltab} {
+//   .menu {
+//     display: none;
+//   }
+// }
 
 @media #{$media-tablet} {
   //
